@@ -5,3 +5,25 @@ Wenn ihr das lesen könnt hat mein erster Commit funktioniert und ich werde eure
 (Natürlich erst nachdem ich meine gepushed habe^^)
 
 Heute ist der 13.04. 18:57 und wir hocken schon wieder in der FH so wie im 5. Semester...
+
+
+How to README.md:
+
+- Was tut das Projekt
+- Was liegt wo?
+- Benutzungsbeispiel
+- Dependencies
+- Installationshinweise
+- Autoren
+- �nderungshistorie
+
+
+Lizensen:
+GNU GPL
+GNU LGPL
+MIT/BSD
+Public Domain/ WTFPL
+
+--> opensource.org 
+- Lizens angeben!
+- LICENSE.md mit abgeben
