@@ -6,8 +6,34 @@ Wenn ihr das lesen könnt hat mein erster Commit funktioniert und ich werde eure
 
 Heute ist der 13.04. 18:57 und wir hocken schon wieder in der FH so wie im 5. Semester...
 
+<<<<<<< HEAD
 git add - Datei zum Commit hinzufügen
 git commit - committen
 git pull - aktualisieren mit git hub
 git push - hochladen
 
+=======
+
+How to README.md:
+
+- Was tut das Projekt
+- Was liegt wo?
+- Benutzungsbeispiel
+- Dependencies
+- Installationshinweise
+- Autoren
+- �nderungshistorie
+
+
+Lizensen:
+GNU GPL
+GNU LGPL
+MIT/BSD
+Public Domain/ WTFPL
+
+--> opensource.org 
+- Lizens angeben!
+- LICENSE.md mit abgeben
+>>>>>>> f008e14742e5dff21dd45b681a8e39be70734fa9
+
+git ist lustig
