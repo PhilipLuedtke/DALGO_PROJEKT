@@ -28,5 +28,5 @@ for kk=1:3
 
     %fo = dir(strcat(path, '\', '*.txt')); % Windows User
     fo = [fo dir(strcat(path, '/', '*.txt'))]; % Mac User
-    kk = kk+1;
+    
 end
