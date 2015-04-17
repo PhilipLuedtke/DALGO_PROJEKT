@@ -1,7 +1,7 @@
 clc
 clear all
 close all
-
+% -------------------------------------------------------------------------
 
 
 fileID = fopen('allsenlist.txt');
@@ -12,33 +12,29 @@ y = 0;
 
 for kk = 1:length(C{1})
     varout = C{1}{kk}'';
-    y = [y ' ' varout];
+    y = [y varout];
     
 end
 
 x = regexp(y,'dr[0-9]','start');
-x2 = regexp(y,'she','start');
+x2 = regexp(y,'she','start');       % Sätze nach Wort durchsuchen
 
-
-for kk=1:length(x2)
-   for nn=1:length(x)
-       PosMatrix(kk,nn) = x2(kk)-x(nn);     
-      
-   end
-    
+% Ordner suchen und in Matrix speichern:-----------------------------------
+MatchingFolder = 0;
+for kk=1:length(x)
+       Folder = y(x(kk):x(kk)+8);
+       MatchingFolder = [MatchingFolder ';' Folder];
 end
 
-[a,b] = size(PosMatrix);
-
-for kk=1:a
-    d(kk,:) = PosMatrix(kk,:)>0;
-    
-end
+% TO DO:
+% Subtraktion der Faktoren 
 
 
-
-
-
-
-% %
-% M = dlmread('TIMIT MIT\dr1-fvmh0\sa1.txt','\b');
+% 
+% [a,b] = size(PosMatrix);
+% 
+% for kk=1:a
+%     d(kk,:) = PosMatrix(kk,:)>0;
+%     
+% end
+% 
