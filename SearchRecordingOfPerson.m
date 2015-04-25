@@ -28,18 +28,18 @@ path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT
 
 % Einlesen aller File- und Folder- Namen aus der aus der Datenbank 
 % TIMIT MIT
-audio_file = dir(path_name);
+database = dir(path_name);
 
 % Zaehlindex
 idx = 1;
 
 % Preallokation ...
-folder_list = cell(size(audio_file));
+folder_list = cell(size(database));
 
 % 
-for file_idx = 1:length(audio_file)
+for file_idx = 1:length(database)
     
-    file_name = audio_file(file_idx).name;
+    file_name = database(file_idx).name;
     folder_list{file_idx,1} = regexp(file_name,'dr.......','match');
     
     if ~isempty(folder_list{file_idx,1})
