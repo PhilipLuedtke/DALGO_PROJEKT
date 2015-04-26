@@ -9,11 +9,10 @@ close all;
 clc;
 
 % Bitte Kuerzel der gesuchten Testperson eingeben, bsp marc0
-name_per = 'marc0';
+name_per = 'fvmh0';
 
 % Aufruf der Fkt SearchRecordingOfPerson
 [folder_per, rec_list] = SearchRecordingOfPerson(name_per);
-
 
 % Ausgabe des Ergebnis im Command Window
 fprintf('\n\nDie Aufnahmen der Person mit\ndem Kuerzel "%s" finden Sie im Datenordner "%s"\nDie entsprechenden Audioaufnahmen lauten:\n\n', name_per, folder_per);
