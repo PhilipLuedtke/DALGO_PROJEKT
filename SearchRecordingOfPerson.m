@@ -1,22 +1,36 @@
 function [folder_per, rec_list] = SearchRecordingOfPerson(name_per)
-% function to do search the file with the recordings of a testperson
-% Usage [out_param] = SearchRecordingOfPerson(in_param)
+% function to do search the folder with the recordings of a test person
+% Usage [folder_per, rec_list] = SearchRecordingOfPerson(name_per)
 % Input Parameter:
-%	 per_name: 		 
+%               per_name:   name/code of the test person to search for
 % Output Parameter:
-%	 folder_per:
-%    rec_list:
+%               folder_per: name of the test person's folder
+%               rec_list:   list of the test person's recorded audio files
 %------------------------------------------------------------------------ 
-% Example: Provide example here if applicable (one or two lines) 
+% Example: 
+%           Input:      name_per = 'marc0';
+%           Output:     folder_per = 'dr2-marc0';
+%                       rec_list = 
+% 
+                            %     'sa1.wav'
+                            %     'sa2.wav'
+                            %     'si1188.wav'
+                            %     'si1818.wav'
+                            %     'si558.wav'
+                            %     'sx108.wav'
+                            %     'sx18.wav'
+                            %     'sx198.wav'
+                            %     'sx288.wav'
+                            %     'sx378.wav' 
 
 % Author: J.Heimann, D.Popken, P.Luedtke (c) TGM @ Jade Hochschule applied 
-% licence see EOF 
+% licence see EOF
+%
 % Source: ---
 %
 % Version History:
 % Ver. 0.01 initial create (empty)    25-Apr-2015     Initials (JH, DP, PL)
 % Ver.  1.0 first implementation      25-Apr-2015     Initials (JH, DP, PL)
-
 
 
 %% Einage des absoluten Pfades der TIMIT MIT-Datenbank
@@ -25,7 +39,8 @@ function [folder_per, rec_list] = SearchRecordingOfPerson(name_per)
 %path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT';
 % absoluter Pfad (Philip)
 path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
-%%
+
+%% Auslesen der Ordner der Testpersonen mit relevanten Inhalt
 
 % Einlesen aller File- und Folder- Namen aus der aus der Datenbank 
 % TIMIT MIT
@@ -34,15 +49,17 @@ database = dir(path_name);
 % Zaehlindex
 idx = 1;
 
-% Preallokation ...
+% Preallokation
 folder_list = cell(size(database));
 
 % 
 for file_idx = 1:length(database)
     
+    % Sucht alle Ordner der Testpersonen, kein Treffer = leere Zelle
     file_name = database(file_idx).name;
     folder_list{file_idx,1} = regexp(file_name,'dr.......','match');
     
+    % Abfrage, um die Zellen mit Inhalt in ein neues Cell Array zu schreiben
     if ~isempty(folder_list{file_idx,1})
         folder(idx,1) = folder_list{file_idx,1};
         idx = idx+1;
@@ -50,7 +67,7 @@ for file_idx = 1:length(database)
     
 end
 
-%%
+%% Suche nach dem Ordner der Testperson
 
 % Sucht den Ordner der gesuchten Person
 match_per = regexp(folder(:,1), name_per, 'match'); 
@@ -58,7 +75,7 @@ match_per = regexp(folder(:,1), name_per, 'match');
 % Gibt die Position aus
 pos =  find(~cellfun('isempty',match_per));
 
-
+% Speichert den gefundenen Namen ab
 folder_per = folder{pos,:};
 
 %% Suche aller Audioaufnahmen im Ordner der gesuchten Person
@@ -66,16 +83,18 @@ folder_per = folder{pos,:};
 %audio_file = dir(strcat(path_name,'\',folder_per,'\','*wav')); % WINDOWS 
 audio_file = dir(strcat(path_name,'/',folder_per,'/','*wav')); % MAC
 
+% Speichtert alle wav-Dateien aus dem Ordner
+audio_file = dir(strcat(path_name,'\',folder_per,'\','*wav'));
+
+% Preallokation
 rec_list = cell(size(audio_file));
 
+% For-Schleife, um die Namen der Audiofiles in eine Liste zu speichern
 for kk = 1:length(audio_file)
     
-    rec = audio_file(kk).name;
-    
-    rec_list{kk,1} = rec;
+    rec_list{kk,1} = audio_file(kk).name;
     
 end
-
 
 
 %--------------------Licence ---------------------------------------------
