@@ -10,14 +10,18 @@ clear;
 close all;
 clc;
 
-name_sen = 'si1341';
+name_sen = 'sa2';
 
 [folder_sen] = SearchSentence(name_sen);
 
-fprintf('\nDer Satz mit dem Kuerzel "%s" findet sich in folgenden Ordner/n wieder:\n\n', name_sen);
-fprintf('%s\n', folder_sen{:});
-fprintf('\n\n');
-
+if isempty(folder_sen)
+    errordlg('ERROR: Dieser Satz ist nicht bestandteil der Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
+else    
+    fprintf('\nDer Satz mit dem Kuerzel "%s" findet sich in folgenden Ordner/n wieder:\n\n', name_sen);
+    fprintf('%s\n', folder_sen{:});
+    fprintf('\n\n');
+    
+end
 %--------------------Licence ---------------------------------------------
 % Copyright (c) <2015> J.Heimann, D.Popken, P.Luedtke
 % Jade University of Applied Sciences 
