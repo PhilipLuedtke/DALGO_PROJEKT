@@ -1,5 +1,5 @@
 % Script to test the function SearchDatabase.m 
-% Author: J. Heilmann, D. Popken, P. Luedtke (c) TGM @ Jade Hochschule applied licence see EOF 
+% Author: J. Heimann, D. Popken, P. Luedtke (c) TGM @ Jade Hochschule applied licence see EOF 
 % Version History:
 % Ver. 0.01 initial create (empty) 14-Apr-2015 			 Initials (JH, DP, PL)
 
@@ -9,16 +9,23 @@ clc;
 
 %------------Your script starts here-------- 
 
-%Define your parameters and adjust your function call
+% Searching: You have to choose between a person, a word, a sentence 
+% or a phonem, or you can combine them.
 
-NrOfCrits = 1;  % Number of search-criterions
-Crit1 = 'suit';     % String wich contains the search-keyword
 
-[out_param] = SearchDatabase(NrOfCrits,Crit1);
+%NrOfCrits = 1;  % Number of search-criterions
+
+% Search for sentence, word, person, phonem:
+Word = [];   % Gesuchtes Wort
+Sentence = 'sa1';  % Gesuchter Satz
+Person = 'fvmh0';    % Gesuchte Person
+Phonem = [];    % Gesuchtes Phonem
+
+[WordOut,SentenceOut,PersonOut,PhonemOut,rec_list] = SearchDatabase(NrOfCrits,Word,Sentence,Person,Phonem);
 
 
 %--------------------Licence ---------------------------------------------
-% Copyright (c) <2015> J. Heilmann, D. Popken, P. Luedtke
+% Copyright (c) <2015> J. Heimann, D. Popken, P. Luedtke
 % Jade University of Applied Sciences 
 % Permission is hereby granted, free of charge, to any person obtaining 
 % a copy of this software and associated documentation files 
