@@ -9,16 +9,20 @@ close all;
 clc;
 
 % Bitte Kuerzel der gesuchten Testperson eingeben, bsp marc0
-name_per = 'fvmh0';
+name_per = 'faem0';
 
 % Aufruf der Fkt SearchRecordingOfPerson
 [folder_per, rec_list] = SearchRecordingOfPerson(name_per);
 
+if isempty(folder_per)
+    errordlg('ERROR: Die gesuchte Person ist nicht bestandteil dieser Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
+else 
 % Ausgabe des Ergebnis im Command Window
 fprintf('\n\nDie Aufnahmen der Person mit\ndem Kuerzel "%s" finden Sie im Datenordner "%s"\nDie entsprechenden Audioaufnahmen lauten:\n\n', name_per, folder_per);
 fprintf('%s\n', rec_list{:});
 fprintf('\n');
 
+end
 
 %--------------------Licence ---------------------------------------------
 % Copyright (c) <2015> J.Heimann, D.Popken, P.Luedtke
