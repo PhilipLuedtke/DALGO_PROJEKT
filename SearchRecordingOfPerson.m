@@ -32,13 +32,18 @@ function [folder_per, rec_list] = SearchRecordingOfPerson(name_per)
 % Ver. 0.01 initial create (empty)    25-Apr-2015     Initials (JH, DP, PL)
 % Ver.  1.0 first implementation      25-Apr-2015     Initials (JH, DP, PL)
 
+%% Ueberpruefung des Inputs
 
+if isempty(regexp(name_per,'\w*...\d*', 'once'))
+    folder_per = [];
+    rec_list = [];
+else
 %% Einage des absoluten Pfades der TIMIT MIT-Datenbank
 
 % absoluter Pfad (Jan)
-%path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT';
+path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT';
 % absoluter Pfad (Philip)
-path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
+%path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
 
 %% Auslesen der Ordner der Testpersonen mit relevanten Inhalt
 
@@ -72,19 +77,22 @@ end
 % Sucht den Ordner der gesuchten Person
 match_per = regexp(folder(:,1), name_per, 'match'); 
 
-% Gibt die Position aus
-pos =  find(~cellfun('isempty',match_per));
-
-% Speichert den gefundenen Namen ab
-folder_per = folder{pos,:};
+if find(~cellfun(@isempty, match_per))
+    % Gibt die Position aus
+    pos =  find(~cellfun('isempty',match_per));
+    
+    % Speichert den gefundenen Namen ab
+    folder_per = folder{pos,:};
+    
+else
+    folder_per = [];    
+end
 
 %% Suche aller Audioaufnahmen im Ordner der gesuchten Person
 
-%audio_file = dir(strcat(path_name,'\',folder_per,'\','*wav')); % WINDOWS 
-audio_file = dir(strcat(path_name,'/',folder_per,'/','*wav')); % MAC
-
 % Speichtert alle wav-Dateien aus dem Ordner
-audio_file = dir(strcat(path_name,'\',folder_per,'\','*wav'));
+audio_file = dir(strcat(path_name,'\',folder_per,'\','*wav')); % WINDOWS
+%audio_file = dir(strcat(path_name,'/',folder_per,'/','*wav')); % MAC
 
 % Preallokation
 rec_list = cell(size(audio_file));
@@ -96,6 +104,7 @@ for kk = 1:length(audio_file)
     
 end
 
+end
 
 %--------------------Licence ---------------------------------------------
 % Copyright (c) <2015> J.Heimann, D.Popken, P.Luedtke
