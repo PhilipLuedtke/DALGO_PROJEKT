@@ -15,13 +15,15 @@ clc;
 
 %NrOfCrits = 1;  % Number of search-criterions
 
-% Search for sentence, word, person, phonem:
-Word = [];   % Gesuchtes Wort
-Sentence = 'sa1';  % Gesuchter Satz
-Person = 'fvmh0';    % Gesuchte Person
-Phonem = [];    % Gesuchtes Phonem
+% Nichts übergeben = []
+% Zu übergebenes Kriterium in '' 
+Word = 'a';                 % Gesuchtes Wort
+Sentence = 'sa1';           % Gesuchter Satz
+%Person = 'fvmh0';          % Gesuchte Person
+Person = [];
+Phonem = [];                % Gesuchtes Phonem
 
-[WordOut,SentenceOut,PersonOut,PhonemOut,rec_list] = SearchDatabase(NrOfCrits,Word,Sentence,Person,Phonem);
+[WordOut,SentenceOut,PersonOut,PhonemOut,rec_list] = SearchDatabase(Word,Sentence,Person,Phonem);
 
 
 %--------------------Licence ---------------------------------------------
