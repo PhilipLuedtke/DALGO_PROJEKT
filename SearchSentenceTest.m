@@ -5,14 +5,15 @@
 % Version History:
 % Ver. 0.01 initial create (empty)     26-Apr-2015    Initials (JH, DP, PL)
 % Ver. 1.0  first implementation       26-Apr-2015    Initials (JH, DP, PL)
+% Ver. 2.0  new output param added     29-Apr-2015    Initials (JH, DP, PL)
 
 clear;
 close all;
 clc;
 
-name_sen = 'sa2';
+name_sen = 'sx123';
 
-[folder_sen] = SearchSentence(name_sen);
+[folder_sen, show_sen] = SearchSentence(name_sen);
 
 if isempty(folder_sen)
     errordlg('ERROR: Dieser Satz ist nicht bestandteil der Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
@@ -20,8 +21,9 @@ else
     fprintf('\nDer Satz mit dem Kuerzel "%s" findet sich in folgenden Ordner/n wieder:\n\n', name_sen);
     fprintf('%s\n', folder_sen{:});
     fprintf('\n\n');
-    
+    fprintf('Und lautet:\n\n%s', show_sen);
 end
+
 %--------------------Licence ---------------------------------------------
 % Copyright (c) <2015> J.Heimann, D.Popken, P.Luedtke
 % Jade University of Applied Sciences 
