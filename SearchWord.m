@@ -16,8 +16,9 @@ function [ausgabe] = SearchWord(word)
 % Ver. 0.01 initial create (empty) 25-Apr-2015  Initials (JH PL DP)
 
 %------------Your function implementation here---------------------------
-
-word_manip = sprintf('[^a-z0-9]%s[^a-z0-9]',word);
+% eingrenzen der Suche auf das Wort, wichtig für besonders kurze Worte z.B.
+% 'a', 'is' oder 'an'
+word_manip = sprintf('^%s$',word);
 
 % txtfile allsenlist wird einglesen und in 'C' gespeichert
 fileID = fopen('allsenlist.txt');
@@ -68,12 +69,13 @@ if ~isempty(pos2)
         groesste_neg = find(pos_oder_neg==0); % Position der ersten Null ist die größte negative Zahl
         kleinste_pos = min(groesste_neg)-1; % Vorherige Position -1 ist die kleinste positive Zahl
         answer = result(pos(kleinste_pos)); % die Zahl gibt die Position aus pos an in der die Position in result steht
-        var = [var answer]; % Alle Antworten in einem Vektor
+        var = [var; answer]; % Alle Antworten in einem Vektor
     end
     
     ausgabe = var(2:end); % Erster Eintrag ist 'var = 0', daher Ausgabe von (2:end)
+    
 else
-  ausgabe = sprintf('word not found');
+    ausgabe = sprintf('word not found');
 end
 %--------------------Licence ---------------------------------------------
 % Copyright (c) <2015> J. Heimann, P. Luedtke, D. Popken
