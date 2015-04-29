@@ -1,4 +1,4 @@
-function [folder_sen] = SearchSentence(name_sen)
+function [folder_sen, show_sen] = SearchSentence(name_sen)
 % function to search for a specific sentence in the database
 % Usage [folder_sen] = SearchSentence(name_sen)
 % Input Parameter:
@@ -11,7 +11,10 @@ function [folder_sen] = SearchSentence(name_sen)
 % Example:   
 %           Input:      name_sen = 'sx123';
 %           Output:     folder_sen = 'dr5-ftlg0';
+%                       show_sen =
 %
+%                          A screwdriver is made from vodka and orange juice.
+%                               
 % Author: J.Heimann, D.Popken, P.Luedtke (c) TGM @ Jade Hochschule applied 
 % licence see EOF 
 %
@@ -20,20 +23,21 @@ function [folder_sen] = SearchSentence(name_sen)
 % Version History:
 % Ver. 0.01 initial create (empty)     26-Apr-2015    Initials (JH, DP, PL)
 % Ver. 1.0  first implementation       26-Apr-2015    Initials (JH, DP, PL)
+% Ver. 2.0  new output param added     29-Apr-2015    Initials (JH, DP, PL)
 
 %% Ueberpruefung des Inputs
 
-if isempty(regexp(name_sen,'\<s\w*\d*', 'once'))
+if isempty(regexp(name_sen,'[a-z][a-z][0-9]', 'match'))
     folder_sen = [];
-    
+    show_sen = [];
 else
 
 %% Einage des absoluten Pfades der TIMIT MIT-Datenbank
 
 % absoluter Pfad (Jan)
-%path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT';
+path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT';
 % absoluter Pfad (Philip)
-path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
+%path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
 
 %% Auslesen der Ordner der Testpersonen mit relevanten Inhalt
 
@@ -93,6 +97,29 @@ for fol_idx = 1:length(folder)
     end
     
 end
+
+if ~isempty(folder_sen)
+    
+    %% Ausgabe des Satzes
+    
+    % Speichert die gesuchte txt-Datei
+    file = dir(strcat(path_name, '\', folder_sen{1,1}, '\', [name_sen, '.txt']));
+    
+    % Einlesen der txt-Datei
+    fid = fopen(file.name);
+    
+    % Einlesen & Abspeichern der Anfang- und Endsamples
+    sample = fscanf(fid,'%i',[1,2])+1;
+    % Einlesen & Abspeichern des Satzes
+    show_sen = fscanf(fid,'%c');
+    fclose(fid);
+    
+else
+    folder_sen = [];
+    show_sen = [];
+    
+end
+
 
 end
 
