@@ -17,7 +17,7 @@ function [WordOut,SentenceOut,PersonOut,PhonemOut,rec_list] = SearchDatabase(Wor
 %         provide the citation detail here (with equation no. if applicable)  
 % Version History:
 % Ver. 0.01 initial create (empty) 14-Apr-2015  Initials (JH, DP, PL)
-% Ver. 1.0  first implementation       27-Apr-2015    Initials (PL, DP, JH)
+% Ver. 1.0  first implementation       27-Apr-2015    Initials (JH, DP, PL)
 %------------Your function implementation here--------------------------- 
 
 % Abfrage nach Übergabekriterien und Ausführen der Unterfunktionen:
@@ -59,8 +59,19 @@ if ~isempty(Person) == 1
 end
 
 if ~isempty(Phonem) == 1
-    PhonemOut = SearchWord(Phonem); % Funktionsaufruf
+    [PhonemOut] = SearchPhoneme(Phonem); % Funktionsaufruf
     SentenceOut = []; PersonOut = []; WordOut = []; rec_list = [];
+    Sprecher = PhonemOut(:,1);   % Sucht die Personen, bei denen das Phonem auftaucht
+    Satz = PhonemOut(:,2);
+    % Ausgabe des Ergebnis im Command Window
+    fprintf('\n\nDas Phonem "%s" sagen folgende Personen\n:', Phonem);
+    disp(Sprecher)
+    fprintf('\nDas Phonem befindet sich in folgenden Saetzen:\n\n');
+    
+    for kk = 1 : length(Satz)
+        disp(strvcat(Satz{kk}))
+    end
+    
 end
 
 
