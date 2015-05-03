@@ -27,12 +27,6 @@ else
     
 end
 
-%% TO-DO:
-% Funktion läuft soweit und kann auch auf Fehler überprüfen! Muss nun noch
-% in die Main-Fkt. eingebaut werden!!
-%%
-
-
 %--------------------Licence ---------------------------------------------
 % Copyright (c) <2015> J.Heimann, D.Popken, P.Luedtke
 % Jade University of Applied Sciences
