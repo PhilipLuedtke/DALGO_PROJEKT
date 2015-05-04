@@ -1,28 +1,29 @@
-% Script to test the function SearchSentence.m 
+% Script to test the function SearchPerson.m 
 % Author: J.Heimann, D.Popken, P.Luedtke (c) TGM @ Jade Hochschule applied 
 % licence see EOF 
 %
 % Version History:
-% Ver. 0.01 initial create (empty)     26-Apr-2015    Initials (JH, DP, PL)
-% Ver. 1.0  first implementation       26-Apr-2015    Initials (JH, DP, PL)
-% Ver. 2.0  new output param added     29-Apr-2015    Initials (JH, DP, PL)
+% Ver. 0.01 initial create (empty)    03-May-2015     Initials (JH, DP, PL)
+% Ver. 1.0 first implementation       03-May-2015     Initials (JH, DP, PL)
 
 clear;
 close all;
 clc;
 
-name_sen = 'sx123';
+% Bitte Kuerzel der gesuchten Testperson eingeben, bsp marc0
+name_per = 'marc0';
 
-[folder_sen, show_sen] = SearchSentence(name_sen);
+% Aufruf der Fkt SearchRecordingOfPerson
+[folder_per] = SearchRecordingOfPerson(name_per);
 
-if isempty(folder_sen)
-    errordlg('ERROR: Dieser Satz ist nicht bestandteil der Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
-else    
-    fprintf('\nDer Satz mit dem Kuerzel "%s" findet sich in folgenden Ordner/n wieder:\n\n', name_sen);
-    fprintf('%s\n', folder_sen{:});
-    fprintf('\n\n');
-    fprintf('Und lautet:\n\n%s', show_sen);
+if isempty(folder_per)
+    errordlg('ERROR: Die gesuchte Person ist nicht bestandteil dieser Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
+else 
+% Ausgabe des Ergebnis im Command Window
+fprintf('\n\nAlle aufgenommenen Daten der Person mit\ndem Kuerzel "%s" finden Sie im Datenordner "%s"\n\n', name_per, folder_per);
+
 end
+
 
 %--------------------Licence ---------------------------------------------
 % Copyright (c) <2015> J.Heimann, D.Popken, P.Luedtke

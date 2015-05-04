@@ -13,15 +13,14 @@ clc;
 % or a phonem, or you can combine them.
 
 
-%NrOfCrits = 1;  % Number of search-criterions
-
 % Nichts übergeben = []
 % Zu übergebenes Kriterium in '' 
-Word = 'a';                 % Gesuchtes Wort
+%Word = 'a';                 % Gesuchtes Wort
+Word = [];
 Sentence = 'sa1';           % Gesuchter Satz
 %Person = 'fvmh0';          % Gesuchte Person
 Person = [];
-Phonem = [];                % Gesuchtes Phonem
+Phonem = 'epi';                % Gesuchtes Phonem
 
 [WordOut,SentenceOut,PersonOut,PhonemOut,rec_list] = SearchDatabase(Word,Sentence,Person,Phonem);
 

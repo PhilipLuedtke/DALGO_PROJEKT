@@ -1,27 +1,26 @@
-% Script to test the function SearchSentence.m 
+% Script to test the function SearchRecording.m 
 % Author: J.Heimann, D.Popken, P.Luedtke (c) TGM @ Jade Hochschule applied 
 % licence see EOF 
 %
 % Version History:
-% Ver. 0.01 initial create (empty)     26-Apr-2015    Initials (JH, DP, PL)
-% Ver. 1.0  first implementation       26-Apr-2015    Initials (JH, DP, PL)
-% Ver. 2.0  new output param added     29-Apr-2015    Initials (JH, DP, PL)
+% Ver. 0.01 initial create (empty)    03-May-2015     Initials (JH, DP, PL)
+% Ver. 1.0 first implementation       03-May-2015     Initials (JH, DP, PL)
+
 
 clear;
 close all;
 clc;
 
-name_sen = 'sx123';
+name_rec = 'sx';
 
-[folder_sen, show_sen] = SearchSentence(name_sen);
+[folder_rec] = SearchRecording(name_rec);
 
-if isempty(folder_sen)
-    errordlg('ERROR: Dieser Satz ist nicht bestandteil der Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
+if isempty(folder_rec)
+    errordlg('ERROR: Diese Aufnahme ist nicht Bestandteil der Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
 else    
-    fprintf('\nDer Satz mit dem Kuerzel "%s" findet sich in folgenden Ordner/n wieder:\n\n', name_sen);
-    fprintf('%s\n', folder_sen{:});
+    fprintf('\nDie Audioaufnahme mit dem Kuerzel "%s" findet sich in folgenden Ordner/n wieder:\n\n', name_rec);
+    fprintf('%s\n', folder_rec{:});
     fprintf('\n\n');
-    fprintf('Und lautet:\n\n%s', show_sen);
 end
 
 %--------------------Licence ---------------------------------------------
