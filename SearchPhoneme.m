@@ -27,13 +27,24 @@ function [result_phn] = SearchPhoneme(phn)
 
 %% Eingabe des absoluten Pfades der TIMIT MIT-Datenbank
 
+% relativer Pfad
+% path_name = '..\TIMIT MIT';
+
 % absoluter Pfad (Jan)
+<<<<<<< HEAD
 path_name = '..\DALGO_PROJEKT\TIMIT MIT';
 %path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT';
 % absoluter Pfad (Philip)
 % path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
 % relativer Pfad
 % path_name = '..\TIMIT MIT';
+=======
+%path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT';
+
+% absoluter Pfad (Philip)
+path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
+
+>>>>>>> d7c4d76e900c6de14def42b91ae54f4033b702ee
 
 %% Auslesen der Ordner der Testpersonen mit relevanten Inhalt
 

@@ -29,9 +29,9 @@ else
     %% Einage des absoluten Pfades der TIMIT MIT-Datenbank
     
     % absoluter Pfad (Jan)
-    path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT';
+    %path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT';
     % absoluter Pfad (Philip)
-    %path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
+    path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
     
     %% Auslesen der Ordner der Testpersonen mit relevanten Inhalt
     
@@ -72,8 +72,8 @@ else
         fol_name = folder{fol_idx};
         
         % Speichert alle wav-Dateien aus einem Ordner
-        file_name = dir(strcat(path_name,'\',fol_name,'\','*wav')); % WINDOWS
-        %file_name = dir(strcat(path_name,'/',fol_name,'/','*wav')); % MAC
+        %file_name = dir(strcat(path_name,'\',fol_name,'\','*wav')); % WINDOWS
+        file_name = dir(strcat(path_name,'/',fol_name,'/','*wav')); % MAC
         
         % For-Schleife, um die einzelnen Namen der Audioaufnahme mit dem 
         % Gesuchten abzugleichen

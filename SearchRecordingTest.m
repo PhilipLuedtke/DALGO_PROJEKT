@@ -11,7 +11,7 @@ clear;
 close all;
 clc;
 
-name_rec = 'sx';
+name_rec = 'sa2';
 
 [folder_rec] = SearchRecording(name_rec);
 
