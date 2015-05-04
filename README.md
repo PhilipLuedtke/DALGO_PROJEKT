@@ -17,14 +17,14 @@ The following subfunctions are needed:
 - (SearchRecordingOfPerson.m)
 
 
-The newest version of this function and its subfunctions can be found on [Github](https://github.com/PhilipLuedtke/DALGO_PROJEKT/commits/master).
+The latest version of this function and its subfunctions can be found on [Github](https://github.com/PhilipLuedtke/DALGO_PROJEKT/commits/master).
 Additionally, there are test-files for each subfunction (SearchWordTest.m,...).
 All the subfunctions and the IMIT MIT Database must be placed in the same directory as the SearchDatabase.m-File.
 
-`It is helpfull to check the adjusted path in the subfunctions to avoid potential errors.``
+`It is helpfull to check the adjusted path in the subfunctions to avoid potential errors.`
 ## How to use SearchDatabase.m
 ### Syntax:
-`() = SearchDatabase('keyword1','type1','keyword2','type2',...)`
+`(s) = SearchDatabase('keyword1','type1','keyword2','type2',...)`
 
 ###input types:
 - word
@@ -34,13 +34,13 @@ All the subfunctions and the IMIT MIT Database must be placed in the same direct
 - recording
 
 ###output arguments:
-
+- s: s is a struct which contains the directories/sentences/recordings which contains the search-word
 
 **HIER KOMMT NOCH DER OUTPUT REIN!!!**
 
 Examples:
-- `() = SearchDatabase('she','word','sa1','sentence','epi','phonem')`
-- `() = SearchDatabase('she','word','her','word','marc0','person','sa1','sentence')`
+- `(s) = SearchDatabase('she','word','sa1','sentence','epi','phonem')`
+- `(s) = SearchDatabase('she','word','her','word','marc0','person','sa1','sentence')`
 
 
 ##Version History:
