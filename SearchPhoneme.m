@@ -21,10 +21,6 @@ function [result_phn] = SearchPhoneme(phn)
 % Ver. 1.0  first implementation       28-Apr-2015    Initials (JH, DP, PL)
 
 
-%% Hier kommt noch eine Ueberpruefung rein....
-
-
-
 %% Eingabe des absoluten Pfades der TIMIT MIT-Datenbank
 
 % relativer Pfad
