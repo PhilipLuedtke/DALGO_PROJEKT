@@ -38,7 +38,7 @@ if ~isempty(Sentence) == 1
     % Überprüft ob eingebener Satz vorhanden. Ansonsten:
     % Fehlermeldung
     if isempty(SentenceOut)
-        errordlg('ERROR: Dieser Satz ist nicht bestandteil der Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
+        errordlg('ERROR: Dieser Satz ist nicht Bestandteil der Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
     else
         fprintf('\nDer Satz mit dem Kuerzel "%s" findet sich in folgenden Ordner/n wieder:\n\n', Sentence);
         fprintf('%s\n', SentenceOut{:});
@@ -53,7 +53,7 @@ if ~isempty(Person) == 1
     % Überprüft ob eingebene Person vorhanden Ansonsten:
     % Fehlermeldung
     if isempty(PersonOut)
-        errordlg('ERROR: Die gesuchte Person ist nicht bestandteil dieser Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
+        errordlg('ERROR: Die gesuchte Person ist nicht Bestandteil dieser Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
     else
         % Ausgabe des Ergebnisses im Command Window
         fprintf('\n\nDie Aufnahmen der Person mit\ndem Kuerzel "%s" finden Sie im Datenordner "%s"\nDie entsprechenden Audioaufnahmen lauten:\n\n', Person, PersonOut);
