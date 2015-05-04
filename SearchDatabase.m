@@ -1,4 +1,4 @@
-function [WordOut,SentenceOut,PersonOut,PhonemOut,rec_list] = SearchDatabase(Word,Sentence,Person,Phonem)
+function [WordOut,SentenceOut,PersonOut,rec_list,PhonemOut] = SearchDatabase(Word,Sentence,Person,Phonem)
 % function to search for a word, sentence, person or phonem, or a combination of them
 % in the TIMIT MIT Database
 % Usage [WordOut,SentenceOut,PersonOut,PhonemOut,rec_list] = SearchDatabase(Word,Sentence,Person,Phonem)
@@ -64,14 +64,14 @@ end
 
 % Überprüfung/Ausgabe der Phoneme:
 if ~isempty(Phonem) == 1
-    [result_phn] = SearchPhoneme(Phonem);
+    [PhonemOut] = SearchPhoneme(Phonem);
     SentenceOut = []; PersonOut = []; WordOut = []; rec_list = [];
-    leer = cellfun('isempty',result_phn);
+    leer = cellfun('isempty',PhonemOut);
     if leer(1,2) == 1
         errordlg('ERROR: Dieses Phonem ist nicht Bestandteil der Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
     else
-        person = result_phn(:,1);   % Sucht die Personen, bei denen das Phonem auftaucht
-        satz = result_phn(:,2);
+        person = PhonemOut(:,1);   % Sucht die Personen, bei denen das Phonem auftaucht
+        satz = PhonemOut(:,2);
         
         % Ausgabe des Ergebnisses im Command Window
         fprintf('\n\nDas Phonem "%s" sagen folgende Personen:\n', Phonem);
