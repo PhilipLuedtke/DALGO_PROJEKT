@@ -16,7 +16,7 @@ clc;
 % Nichts übergeben = []
 % Zu übergebenes Kriterium in '' 
 %Word = 'a';                 % Gesuchtes Wort
-Word = [];
+Word = 'sher';
 Sentence = 'sa1';           % Gesuchter Satz
 %Person = 'fvmh0';          % Gesuchte Person
 Person = [];
