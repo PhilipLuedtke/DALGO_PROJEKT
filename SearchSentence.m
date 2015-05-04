@@ -31,30 +31,6 @@ if isempty(regexp(name_sen,'[a-z][a-z][0-9]', 'match'))
     folder_sen = [];
     show_sen = [];
 else
-<<<<<<< HEAD
-
-%% Einage des absoluten Pfades der TIMIT MIT-Datenbank
-
-% absoluter Pfad (Jan)
-path_name = '..\DALGO_PROJEKT\TIMIT MIT';
-% absoluter Pfad (Philip)
-%  path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
-
-%% Auslesen der Ordner der Testpersonen mit relevanten Inhalt
-
-% Einlesen aller File- und Folder- Namen aus der Datenbank TIMIT MIT
-database = dir(path_name);
-
-% Zaehlindex
-idx = 1;
-
-% Preallokation
-folder_list = cell(size(database));
-
-% 
-for file_idx = 1:length(database)
-=======
->>>>>>> 0aab87c851139557bf92e64c68a48d5517e2b4b4
     
     %% Eingabe des absoluten Pfades der TIMIT MIT-Datenbank
     
@@ -90,17 +66,6 @@ for file_idx = 1:length(database)
     end
     
     %% Suche nach dem Satz in den Ordnerstrukturen
-    
-<<<<<<< HEAD
-    % Speichert die gesuchte txt-Datei
-   file = dir(strcat(path_name, '\', folder_sen{1,1}, '\', [name_sen, '.txt']));   % WINDOWS
-%     file = dir(strcat(path_name, '/', folder_sen{1,1}, '/', [name_sen, '.txt']));   % MAC 
-    % Einlesen der txt-Datei
-    fid = fopen(file.name);
-=======
-    % Spaeterer Ausgabeparameter
-    folder_sen = [];
->>>>>>> 0aab87c851139557bf92e64c68a48d5517e2b4b4
     
     % Zaehlindex
     idx = 1;
