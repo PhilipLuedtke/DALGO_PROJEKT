@@ -35,9 +35,9 @@ else
 %% Einage des absoluten Pfades der TIMIT MIT-Datenbank
 
 % absoluter Pfad (Jan)
-%path_name = '..\DALGO_PROJEKT\TIMIT MIT';
+path_name = '..\DALGO_PROJEKT\TIMIT MIT';
 % absoluter Pfad (Philip)
- path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
+%  path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
 
 %% Auslesen der Ordner der Testpersonen mit relevanten Inhalt
 
@@ -103,8 +103,8 @@ if ~isempty(folder_sen)
     %% Ausgabe des Satzes
     
     % Speichert die gesuchte txt-Datei
-   % file = dir(strcat(path_name, '\', folder_sen{1,1}, '\', [name_sen, '.txt']));   % WINDOWS
-    file = dir(strcat(path_name, '/', folder_sen{1,1}, '/', [name_sen, '.txt']));   % MAC 
+   file = dir(strcat(path_name, '\', folder_sen{1,1}, '\', [name_sen, '.txt']));   % WINDOWS
+%     file = dir(strcat(path_name, '/', folder_sen{1,1}, '/', [name_sen, '.txt']));   % MAC 
     % Einlesen der txt-Datei
     fid = fopen(file.name);
     

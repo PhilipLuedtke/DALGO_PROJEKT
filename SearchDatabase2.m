@@ -1,4 +1,4 @@
-function [] = SearchDatabase2(varargin)
+function [s] = SearchDatabase2(varargin)
 % function to search for a word, sentence, person or phonem, or a combination of them
 % in the TIMIT MIT Database
 % Usage [WordOut,SentenceOut,PersonOut,PhonemOut,rec_list] = SearchDatabase(Word,Sentence,Person,Phonem)
@@ -22,99 +22,90 @@ function [] = SearchDatabase2(varargin)
 nr = nargin;
 for nn = 2:2:nr
     if strcmp('word',varargin{nn}) == 1;
-        Word(nn/2) = varargin{nn-1};
+        Word2{nn/2} = varargin{nn-1};
     elseif strcmp('sentence',varargin{nn}) == 1;
-        Sentence(nn/2) = varargin{nn-1};
+        Sentence2{nn/2} = varargin{nn-1};
     elseif strcmp('phonem',varargin{nn}) == 1;
-        Phonem(nn/2) = varargin{nn-1};
+        Phonem2{nn/2} = varargin{nn-1};
     elseif strcmp('person',varargin{nn}) == 1;
-        Person(nn/2) = varargin{nn-1};
+        Person2{nn/2} = varargin{nn-1};
     end
 end
 
-if exist('Word','var')==0;
-    Word = [];
+if exist('Word2','var')==0;
+    Word2 = {};
 end
+Word = Word2(~cellfun('isempty',Word2));
 
-
-if exist('Sentence','var')==0;
-    Sentence = [];
+if exist('Sentence2','var')==0;
+    Sentence2 = {};
 end
+Sentence = Sentence2(~cellfun('isempty',Sentence2));
 
-
-if exist('Person','var')==0;
-    Person = [];
+if exist('Person2','var')==0;
+    Person2 = {};
 end
+Person = Person2(~cellfun('isempty',Person2));
 
-
-if exist('Phonem','var')==0;
-    Phonem = [];
+if exist('Phonem2','var')==0;
+    Phonem2 = {};
 end
-
-
+Phonem = Phonem2(~cellfun('isempty',Phonem2));
 
 % Abfrage nach Übergabekriterien und Ausführen der Unterfunktionen:
-
-% Überprüfung/Ausgabe des Wortes: 
-if  ~isempty(Word) == 1
-    WordOut = SearchWord(Word); % Funktionsaufruf
-    % Ausgabe:
-    
-    
-    SentenceOut = []; PersonOut = []; PhonemOut = []; rec_list = [];
+for ww = 1:length(Word)
+    % Überprüfung/Ausgabe des Wortes:
+    if  ~isempty(Word) == 1
+%         WordOut{ww} = SearchWord(Word{ww}); % Funktionsaufruf
+        % Ausgabe:
+        akt_word = Word{ww};
+        s.word.(akt_word) = SearchWord(Word{ww});
+    end
+       
 end
-
+% disp(WordOut{:})
 % Überprüfung/Ausgabe des Satzes:
-if ~isempty(Sentence) == 1
-    SentenceOut = SearchSentence(Sentence); % Funktionsaufruf
-    WordOut = []; PersonOut = []; PhonemOut = []; rec_list = [];
-    % Überprüft ob eingebener Satz vorhanden. Ansonsten:
-    % Fehlermeldung
-    if isempty(SentenceOut)
-        errordlg('ERROR: Dieser Satz ist nicht bestandteil der Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
-    else
-        fprintf('\nDer Satz mit dem Kuerzel "%s" findet sich in folgenden Ordner/n wieder:\n\n', Sentence);
-        fprintf('%s\n', SentenceOut{:});
-        fprintf('\n\n');
+for ss = 1:length(Sentence)
+    if ~isempty(Sentence) == 1
+%         SentenceOut{ss} = SearchSentence(Sentence{ss}); % Funktionsaufruf
+        % Überprüft ob eingebener Satz vorhanden. Ansonsten:
+        % Fehlermeldung
+        akt_sentence = Sentence{ss};
+        s.sentence.(akt_sentence) = SearchSentence(Sentence{ss});
+        
     end
 end
 
 % Überprüfung/Ausgabe der Personen:
-if ~isempty(Person) == 1
-    [PersonOut,rec_list] = SearchRecordingOfPerson(Person); % Funktionsaufruf
-    SentenceOut = []; WordOut = []; PhonemOut = [];
-    % Überprüft ob eingebene Person vorhanden Ansonsten:
-    % Fehlermeldung
-    if isempty(PersonOut)
-        errordlg('ERROR: Die gesuchte Person ist nicht bestandteil dieser Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
-    else
-        % Ausgabe des Ergebnisses im Command Window
-        fprintf('\n\nDie Aufnahmen der Person mit\ndem Kuerzel "%s" finden Sie im Datenordner "%s"\nDie entsprechenden Audioaufnahmen lauten:\n\n', Person, PersonOut);
-        fprintf('%s\n', rec_list{:});
-        fprintf('\n');
+for pp = 1:length(Person)
+    if ~isempty(Person) == 1
+%         [PersonOut{pp},rec_list{pp}] = SearchRecordingOfPerson(Person{pp}); % Funktionsaufruf
+        % Überprüft ob eingebene Person vorhanden Ansonsten:
+        % Fehlermeldung
+        akt_person = Person{pp};
+        s.person.(akt_person) = SearchRecordingOfPerson(Person{pp});
     end
 end
 
 % Überprüfung/Ausgabe der Phoneme:
-if ~isempty(Phonem) == 1
-    [result_phn] = SearchPhoneme(Phonem);
-    SentenceOut = []; PersonOut = []; WordOut = []; rec_list = [];
-    leer = cellfun('isempty',result_phn);
-    if leer(1,2) == 1
-        errordlg('ERROR: Dieses Phonem ist nicht Bestandteil der Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
-    else
-        person = result_phn(:,1);   % Sucht die Personen, bei denen das Phonem auftaucht
-        satz = result_phn(:,2);
-        
-        % Ausgabe des Ergebnisses im Command Window
-        fprintf('\n\nDas Phonem "%s" sagen folgende Personen:\n', Phonem);
-        disp(person)
-        fprintf('\nDas Phonem "%s" befindet sich in folgenden Saetzen:\n\n', Phonem);
-        for kk = 1 : length(satz)
-            disp(strvcat(satz{kk}))
-        end
+for phph = 1:length(Phonem)
+    if ~isempty(Phonem) == 1
+%         [PhonemOut{phph}] = SearchPhoneme(Phonem{phph});
+        akt_phonem = Phonem{phph};
+        s.person.(akt_phonem) = SearchPhoneme(Phonem{phph});
+%         leer = cellfun('isempty',s.person.(akt_phonem){phph});
+%         if leer(1,2) == 1
+%             errordlg('ERROR: Dieses Phonem ist nicht Bestandteil der Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
+%         else
+%             
+%             % Ausgabe des Ergebnisses im Command Window
+%             %             fprintf('\n\nDas Phonem "%s" sagen folgende Personen:\n', Phonem);
+%             %             fprintf('\nDas Phonem "%s" befindet sich in folgenden Saetzen:\n\n', Phonem);
+%             
+%         end
     end
 end
+
 
 
 %--------------------Licence ---------------------------------------------
