@@ -25,8 +25,10 @@ if isempty(regexp(name_per,'\w*...\d*', 'once'))
     folder_per = [];
     
 else
-    %% Einage des absoluten Pfades der TIMIT MIT-Datenbank
+    %% Eingabe des absoluten Pfades der TIMIT MIT-Datenbank
     
+    % relativer Pfad
+    % path_name = '..\DALGO_PROJEKT\TIMIT MIT';
     % absoluter Pfad (Jan)
     %path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT';
     % absoluter Pfad (Philip)
@@ -74,8 +76,6 @@ else
     else
         folder_per = [];
     end
-    
-
 end
 
 %--------------------Licence ---------------------------------------------

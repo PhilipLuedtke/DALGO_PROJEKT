@@ -20,14 +20,19 @@ function [WordOut,SentenceOut,PersonOut,rec_list,PhonemOut] = SearchDatabase(Wor
 % Ver. 1.0  first implementation       27-Apr-2015    Initials (JH, DP, PL)
 %------------Your function implementation here---------------------------
 
-% Abfrage nach Übergabekriterien und Ausführen der Unterfunktionen:
+%% Abfrage nach Übergabekriterien und Ausführen der Unterfunktionen:
 
 % Überprüfung/Ausgabe des Wortes: 
 if  ~isempty(Word) == 1
     WordOut = SearchWord(Word); % Funktionsaufruf
     % Ausgabe:
-    
-    
+    if isempty(WordOut)
+        errordlg('ERROR: Dieses Wort ist nicht Bestandteil der Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
+    else
+        fprintf('\nDas Wort "%s" befindet sich in folgenden Ordner(n)/Saetzen:\n\n', Word);
+        fprintf('%s\n', WordOut);
+        fprintf('\n\n');
+    end 
     SentenceOut = []; PersonOut = []; PhonemOut = []; rec_list = [];
 end
 

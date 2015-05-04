@@ -6,7 +6,6 @@
 % Ver. 0.01 initial create (empty)    03-May-2015     Initials (JH, DP, PL)
 % Ver. 1.0 first implementation       03-May-2015     Initials (JH, DP, PL)
 
-
 clear;
 close all;
 clc;

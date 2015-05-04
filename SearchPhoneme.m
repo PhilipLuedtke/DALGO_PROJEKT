@@ -21,26 +21,18 @@ function [result_phn] = SearchPhoneme(phn)
 % Ver. 1.0  first implementation       28-Apr-2015    Initials (JH, DP, PL)
 
 
-%% Eingabe des absoluten Pfades der TIMIT MIT-Datenbank
+%% Eingabe des relativen/absoluten Pfades der TIMIT MIT-Datenbank
 
 % relativer Pfad
 % path_name = '..\TIMIT MIT';
+% path_name = '..\DALGO_PROJEKT\TIMIT MIT';
 
 % absoluter Pfad (Jan)
-<<<<<<< HEAD
-path_name = '..\DALGO_PROJEKT\TIMIT MIT';
-%path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT';
-% absoluter Pfad (Philip)
-% path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
-% relativer Pfad
-% path_name = '..\TIMIT MIT';
-=======
-%path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT';
+% path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT';
 
 % absoluter Pfad (Philip)
 path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
 
->>>>>>> d7c4d76e900c6de14def42b91ae54f4033b702ee
 
 %% Auslesen der Ordner der Testpersonen mit relevanten Inhalt
 
@@ -78,12 +70,13 @@ for fol_idx = 1:length(folder)
     fol_name = folder{fol_idx};
     
     % Einlesen aller .phn-Dateien
+    
     %file = dir(strcat(path_name,'\',fol_name,'\','*.phn')); % WINDOWS
     file = dir(strcat(path_name,'/',fol_name,'/','*.phn')); % MAC
+    
     % Zaehlindex
     idx = 1;
-    
-    %
+
     for kk = 1:length(file)
         
         %
@@ -99,15 +92,9 @@ for fol_idx = 1:length(folder)
             idx = idx+1;
         end
     end
-%     if list == 0
-%         errordlg('ERROR: Dieses Phonem ist nicht Bestandteil der Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
-%         break;
-%     else
-        result_phn{fol_idx,1} = fol_name;
-        result_phn{fol_idx,2} = list;
-    end
-%end
-%
+    result_phn{fol_idx,1} = fol_name;
+    result_phn{fol_idx,2} = list;
+end
 
 %--------------------Licence ---------------------------------------------
 % Copyright (c) <2015> J.Heimann, D.Popken, P.Luedtke
