@@ -43,7 +43,7 @@ else
 % absoluter Pfad (Jan)
 %path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT';
 % absoluter Pfad (Philip)
-path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
+path_name = '..\DALGO_PROJEKT\TIMIT MIT';
 
 %% Auslesen der Ordner der Testpersonen mit relevanten Inhalt
 
@@ -91,8 +91,8 @@ end
 %% Suche aller Audioaufnahmen im Ordner der gesuchten Person
 
 % Speichtert alle wav-Dateien aus dem Ordner
-%audio_file = dir(strcat(path_name,'\',folder_per,'\','*wav')); % WINDOWS
-audio_file = dir(strcat(path_name,'/',folder_per,'/','*wav')); % MAC
+audio_file = dir(strcat(path_name,'\',folder_per,'\','*wav')); % WINDOWS
+% audio_file = dir(strcat(path_name,'/',folder_per,'/','*wav')); % MAC
 
 % Preallokation
 rec_list = cell(size(audio_file));
