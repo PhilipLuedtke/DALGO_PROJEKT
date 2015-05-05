@@ -14,6 +14,7 @@ The following subfunctions are needed:
 - SearchRecording.m
 - SearchSentence.m
 - SearchWord.m
+- SearchPerson.m
 - (SearchRecordingOfPerson.m)
 
 
@@ -34,13 +35,12 @@ All the subfunctions and the IMIT MIT Database must be placed in the same direct
 - recording
 
 ###output arguments:
-- s: s is a struct which contains the directories/sentences/recordings which contains the search-word
+- s: s is a struct with the input types and the directories/sentences/recordings which contains the search-word
 
-**HIER KOMMT NOCH DER OUTPUT REIN!!!**
 
 Examples:
-- `(s) = SearchDatabase('she','word','sa1','sentence','epi','phonem')`
-- `(s) = SearchDatabase('she','word','her','word','marc0','person','sa1','sentence')`
+- `(s) = SearchDatabase('she','word','sa1','sentence','epi','phonem');`
+- `(s) = SearchDatabase('she','word','her','word','marc0','person','sa1','sentence');`
 
 
 ##Version History:

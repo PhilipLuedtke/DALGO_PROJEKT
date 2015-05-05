@@ -23,7 +23,6 @@ function [new_result_phn] = SearchPhoneme(phn)
 
 %% Eingabe des Pfades der TIMIT MIT-Datenbank
 
-
 path_name = '..\DALGO_PROJEKT\TIMIT MIT';
 
 %% Auslesen der Ordner der Testpersonen mit relevanten Inhalt
@@ -63,8 +62,10 @@ for fol_idx = 1:length(folder)
     
     % Einlesen aller .phn-Dateien
 
+
     file = dir(strcat(path_name,'\',fol_name,'\','*.phn')); % WINDOWS
 %     file = dir(strcat(path_name,'/',fol_name,'/','*.phn')); % MAC
+
     
     % Zaehlindex
     idx = 1;
@@ -84,6 +85,7 @@ for fol_idx = 1:length(folder)
             idx = idx+1;
         end
     end
+
 
     result_phn{fol_idx,1} = fol_name;
     result_phn{fol_idx,2} = list;
@@ -109,6 +111,7 @@ for nn = 1:length(result_phn)
        end      
    end   
 end
+
 
 %--------------------Licence ---------------------------------------------
 % Copyright (c) <2015> J.Heimann, D.Popken, P.Luedtke

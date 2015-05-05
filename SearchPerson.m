@@ -26,8 +26,10 @@ if isempty(regexp(name_per,'\w*...\d*', 'once'))
     
 else
     %% Eingabe des Pfades der TIMIT MIT-Datenbank
-    
+  
+
     path_name = '..\TIMIT MIT';
+
     
     %% Auslesen der Ordner der Testpersonen mit relevanten Inhalt
     

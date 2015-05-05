@@ -62,9 +62,8 @@ else
     end
     
     %% Suche nach dem Satz in den Ordnerstrukturen
-    
+   
 
-    
     % Zaehlindex
     idx = 1;
     

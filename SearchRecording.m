@@ -5,12 +5,12 @@ function [folder_rec] = SearchRecording(name_rec)
 %       	 name_rec: name/code of the specific recording to search for
 %
 % Output Parameter:
-%          folder_rec: list of the folder names where the specific
-%                      recording is found
+%          folder_rec:  list of the folder names where the specific
+%                           recording is found
 %------------------------------------------------------------------------
 % Example:
-%           Input:      name_rec = 'sx123';
-%           Output:     folder_rec = 'dr5-ftlg0';
+%           Input:          name_rec = 'sx123';
+%           Output:        folder_rec = 'dr5-ftlg0';
 %
 % Author: J.Heimann, D.Popken, P.Luedtke (c) TGM @ Jade Hochschule applied
 % licence see EOF
