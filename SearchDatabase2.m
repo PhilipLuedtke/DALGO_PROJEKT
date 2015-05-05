@@ -13,8 +13,6 @@ function [s] = SearchDatabase2(varargin)
 %------------------------------------------------------------------------
 
 % Author: J. Heimann, D. Popken, P. Luedtke (c) TGM @ Jade Hochschule applied licence see EOF
-% Source: If the function is based on a scientific paper or a web site,
-%         provide the citation detail here (with equation no. if applicable)
 % Version History:
 % Ver. 0.01 initial create (empty) 14-Apr-2015  Initials (JH, DP, PL)
 % Ver. 1.0  first implementation       27-Apr-2015    Initials (JH, DP, PL)
@@ -64,6 +62,7 @@ for ww = 1:length(Word)
        
 end
 % disp(WordOut{:})
+
 % Überprüfung/Ausgabe des Satzes:
 for ss = 1:length(Sentence)
     if ~isempty(Sentence) == 1
@@ -93,16 +92,16 @@ for phph = 1:length(Phonem)
 %         [PhonemOut{phph}] = SearchPhoneme(Phonem{phph});
         akt_phonem = Phonem{phph};
         s.person.(akt_phonem) = SearchPhoneme(Phonem{phph});
-%         leer = cellfun('isempty',s.person.(akt_phonem){phph});
-%         if leer(1,2) == 1
-%             errordlg('ERROR: Dieses Phonem ist nicht Bestandteil der Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
-%         else
-%             
-%             % Ausgabe des Ergebnisses im Command Window
-%             %             fprintf('\n\nDas Phonem "%s" sagen folgende Personen:\n', Phonem);
-%             %             fprintf('\nDas Phonem "%s" befindet sich in folgenden Saetzen:\n\n', Phonem);
-%             
-%         end
+        leer = cellfun('isempty',s.person.(akt_phonem){phph});
+        if leer(1,2) == 1
+            errordlg('ERROR: Dieses Phonem ist nicht Bestandteil der Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
+        else
+            
+            % Ausgabe des Ergebnisses im Command Window
+            %             fprintf('\n\nDas Phonem "%s" sagen folgende Personen:\n', Phonem);
+            %             fprintf('\nDas Phonem "%s" befindet sich in folgenden Saetzen:\n\n', Phonem);
+            
+        end
     end
 end
 
