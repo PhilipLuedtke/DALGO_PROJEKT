@@ -1,7 +1,7 @@
 function [] = SearchDatabase2(varargin)
 % function to search for a word, sentence, person or phonem, or a combination of them
 % in the TIMIT MIT Database
-% Usage x = SearchDatabase2('she','word','sa1','sentence','fvmh0','person','epi','phonem')
+% Usage [] = SearchDatabase2('she','word','sa1','sentence','fvmh0','person','epi','phonem')
 % Input Parameter:
 %	 word: 		 Word you are looking for
 %    sentence:   Sentence you are looking for
@@ -10,8 +10,6 @@ function [] = SearchDatabase2(varargin)
 %------------------------------------------------------------------------
 
 % Author: J. Heimann, D. Popken, P. Luedtke (c) TGM @ Jade Hochschule applied licence see EOF
-% Source: If the function is based on a scientific paper or a web site,
-%         provide the citation detail here (with equation no. if applicable)
 % Version History:
 % Ver. 0.01 initial create (empty) 14-Apr-2015  Initials (JH, DP, PL)
 % Ver. 1.0  first implementation       27-Apr-2015    Initials (JH, DP, PL)
