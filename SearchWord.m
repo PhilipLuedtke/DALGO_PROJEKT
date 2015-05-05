@@ -1,5 +1,5 @@
 function [ausgabe] = SearchWord(word)
-% function to do something usefull (fill out)
+% function to do search a word in the TIMIT MIT database
 % Usage [out_param] = SearchWord(in_param)
 % Input Parameter:
 %	 word: 		 word is the string which is searched
@@ -15,7 +15,7 @@ function [ausgabe] = SearchWord(word)
 % Version History:
 % Ver. 0.01 initial create (empty) 25-Apr-2015  Initials (JH PL DP)
 
-%------------Your function implementation here---------------------------
+%------------------------------------------------------------------------
 % eingrenzen der Suche auf das Wort, wichtig für besonders kurze Worte z.B.
 % 'a', 'is' oder 'an'
 word_manip = sprintf('^%s$',word);
