@@ -1,4 +1,4 @@
-function [result_phn] = SearchPhoneme(phn)
+function [new_result_phn] = SearchPhoneme(phn)
 % function to search for a specific phoneme in the database
 % Usage [result_phn] = SearchPhoneme(phn)
 % Input Parameter:
@@ -21,30 +21,10 @@ function [result_phn] = SearchPhoneme(phn)
 % Ver. 1.0  first implementation       28-Apr-2015    Initials (JH, DP, PL)
 
 
-%% Eingabe des relativen/absoluten Pfades der TIMIT MIT-Datenbank
+%% Eingabe des Pfades der TIMIT MIT-Datenbank
 
-% relativer Pfad
-% path_name = '..\TIMIT MIT';
-% path_name = '..\DALGO_PROJEKT\TIMIT MIT';
 
-% absoluter Pfad (Jan)
-<<<<<<< HEAD
 path_name = '..\DALGO_PROJEKT\TIMIT MIT';
-%path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT';
-% absoluter Pfad (Philip)
-% path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
-% relativer Pfad
-% path_name = '..\TIMIT MIT';
-
-%path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT';
-=======
-% path_name = 'C:\Users\Jan Heimann\Documents\MATLAB\Dalgo\DALGO_PROJEKT\TIMIT MIT';
->>>>>>> 0aab87c851139557bf92e64c68a48d5517e2b4b4
-
-% absoluter Pfad (Philip)
-% path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
-
-
 
 %% Auslesen der Ordner der Testpersonen mit relevanten Inhalt
 
@@ -82,15 +62,10 @@ for fol_idx = 1:length(folder)
     fol_name = folder{fol_idx};
     
     % Einlesen aller .phn-Dateien
-<<<<<<< HEAD
+
     file = dir(strcat(path_name,'\',fol_name,'\','*.phn')); % WINDOWS
-    %     file = dir(strcat(path_name,'/',fol_name,'/','*.phn')); % MAC
-=======
+%     file = dir(strcat(path_name,'/',fol_name,'/','*.phn')); % MAC
     
-    %file = dir(strcat(path_name,'\',fol_name,'\','*.phn')); % WINDOWS
-    file = dir(strcat(path_name,'/',fol_name,'/','*.phn')); % MAC
-    
->>>>>>> 0aab87c851139557bf92e64c68a48d5517e2b4b4
     % Zaehlindex
     idx = 1;
 
@@ -109,21 +84,31 @@ for fol_idx = 1:length(folder)
             idx = idx+1;
         end
     end
-<<<<<<< HEAD
-    %     if list == 0
-    %         errordlg('ERROR: Dieses Phonem ist nicht Bestandteil der Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
-    %         break;
-    %     else
+
     result_phn{fol_idx,1} = fol_name;
     result_phn{fol_idx,2} = list;
 end
-%end
-%
-=======
-    result_phn{fol_idx,1} = fol_name;
-    result_phn{fol_idx,2} = list;
+
+% Die Ausgabe wird neu sortiert und enthält nun statt eines Cell-Arrays mit
+% mehreren Ebenen nur noch eine Liste. Dies ist wichtig für die Funktion
+% 'output_data'
+
+% Dieser Schritt hätte vermieden werden können und ist sicherlich sehr unelegant
+new_result_phn = {};
+
+for nn = 1:length(result_phn)
+    
+   if ~isempty(result_phn{nn,2})
+       
+       mem_right = result_phn{nn,2};
+       
+       for mm = 1:length(mem_right)
+          content = [result_phn{nn,1} mem_right{mm}];
+          
+          new_result_phn = [new_result_phn; content];
+       end      
+   end   
 end
->>>>>>> 0aab87c851139557bf92e64c68a48d5517e2b4b4
 
 %--------------------Licence ---------------------------------------------
 % Copyright (c) <2015> J.Heimann, D.Popken, P.Luedtke

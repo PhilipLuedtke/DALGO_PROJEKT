@@ -10,7 +10,7 @@ function [] = output_data(s)
 % Source: If the function is based on a scientific paper or a web site, 
 %         provide the citation detail here (with equation no. if applicable)  
 % Version History:
-% Ver. 0.01 initial create (empty) 04-May-2015  Initials (eg. JB)
+% Ver. 0.01 initial create (empty) 04-May-2015  Initials (JH PL DP)
 
 %------------Your function implementation here--------------------------- 
 

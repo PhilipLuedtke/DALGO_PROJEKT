@@ -1,15 +1,12 @@
-function [s] = SearchDatabase2(varargin)
+function [] = SearchDatabase2(varargin)
 % function to search for a word, sentence, person or phonem, or a combination of them
 % in the TIMIT MIT Database
-% Usage [WordOut,SentenceOut,PersonOut,PhonemOut,rec_list] = SearchDatabase(Word,Sentence,Person,Phonem)
+% Usage x = SearchDatabase2('she','word','sa1','sentence','fvmh0','person','epi','phonem')
 % Input Parameter:
-%	 Word: 		 Word you are looking for
-%    Sentence:   Sentence you are looking for
-%    Person:     Person you are looking for
-%    Phonem:     Phonem you are looking for
-% Output Parameter:
-%	 Wordout, SentenceOut...:   Shows the explicit folder or data in wich the
-%                               keyword was found
+%	 word: 		 Word you are looking for
+%    sentence:   Sentence you are looking for
+%    person:     Person you are looking for
+%    phonem:     Phonem you are looking for
 %------------------------------------------------------------------------
 
 % Author: J. Heimann, D. Popken, P. Luedtke (c) TGM @ Jade Hochschule applied licence see EOF
@@ -19,10 +16,15 @@ function [s] = SearchDatabase2(varargin)
 % Ver. 0.01 initial create (empty) 14-Apr-2015  Initials (JH, DP, PL)
 % Ver. 1.0  first implementation       27-Apr-2015    Initials (JH, DP, PL)
 %------------Your function implementation here---------------------------
+
+% --------------------Eingabegröße wird untersucht-------------------------
 nr = nargin;
+% --------------------findet raus wonach in der Eingabe gesucht wird-------
+% ---------------------und greift auf den vorherigen Wert zu---------------
+% ---------------------möglich ist die Suche nach mehreren Wörtern etc.----
 for nn = 2:2:nr
     if strcmp('word',varargin{nn}) == 1;
-        Word2{nn/2} = varargin{nn-1};
+        Word2{nn/2} = varargin{nn-1}; 
     elseif strcmp('sentence',varargin{nn}) == 1;
         Sentence2{nn/2} = varargin{nn-1};
     elseif strcmp('phonem',varargin{nn}) == 1;
@@ -31,10 +33,13 @@ for nn = 2:2:nr
         Person2{nn/2} = varargin{nn-1};
     end
 end
-
+% wird nicht nach z.B. Wörtern gesucht wird der Übergabeparameter an die Unter-
+% funktion auf leere Menge gesetzt
 if exist('Word2','var')==0;
     Word2 = {};
 end
+% Außerdem wird das Cell-Array, dass alle Wörter enthält von leeren Einträgen
+% befreit
 Word = Word2(~cellfun('isempty',Word2));
 
 if exist('Sentence2','var')==0;
@@ -52,61 +57,47 @@ if exist('Phonem2','var')==0;
 end
 Phonem = Phonem2(~cellfun('isempty',Phonem2));
 
-% Abfrage nach Übergabekriterien und Ausführen der Unterfunktionen:
+% Die Unterfunktion 'SearchWord' wird nun für alle Einträge des Cell-Arrays
+% 'Word' aufgerufen und in einem Struct gespeichert
 for ww = 1:length(Word)
-    % Überprüfung/Ausgabe des Wortes:
     if  ~isempty(Word) == 1
-%         WordOut{ww} = SearchWord(Word{ww}); % Funktionsaufruf
-        % Ausgabe:
         akt_word = Word{ww};
         s.word.(akt_word) = SearchWord(Word{ww});
     end
-       
 end
-% disp(WordOut{:})
-% Überprüfung/Ausgabe des Satzes:
+
+% gleiches passiert auch für....
+
+% Sätze...
 for ss = 1:length(Sentence)
     if ~isempty(Sentence) == 1
-%         SentenceOut{ss} = SearchSentence(Sentence{ss}); % Funktionsaufruf
-        % Überprüft ob eingebener Satz vorhanden. Ansonsten:
-        % Fehlermeldung
         akt_sentence = Sentence{ss};
         s.sentence.(akt_sentence) = SearchSentence(Sentence{ss});
-        
     end
 end
 
-% Überprüfung/Ausgabe der Personen:
+% Personen...
 for pp = 1:length(Person)
     if ~isempty(Person) == 1
-%         [PersonOut{pp},rec_list{pp}] = SearchRecordingOfPerson(Person{pp}); % Funktionsaufruf
-        % Überprüft ob eingebene Person vorhanden Ansonsten:
-        % Fehlermeldung
         akt_person = Person{pp};
         s.person.(akt_person) = SearchRecordingOfPerson(Person{pp});
     end
 end
 
-% Überprüfung/Ausgabe der Phoneme:
+% und Phoneme
 for phph = 1:length(Phonem)
     if ~isempty(Phonem) == 1
-%         [PhonemOut{phph}] = SearchPhoneme(Phonem{phph});
         akt_phonem = Phonem{phph};
-        s.person.(akt_phonem) = SearchPhoneme(Phonem{phph});
-%         leer = cellfun('isempty',s.person.(akt_phonem){phph});
-%         if leer(1,2) == 1
-%             errordlg('ERROR: Dieses Phonem ist nicht Bestandteil der Datenbank. Bitte ueberpruefen Sie noch einmal die Eingabe')
-%         else
-%             
-%             % Ausgabe des Ergebnisses im Command Window
-%             %             fprintf('\n\nDas Phonem "%s" sagen folgende Personen:\n', Phonem);
-%             %             fprintf('\nDas Phonem "%s" befindet sich in folgenden Saetzen:\n\n', Phonem);
-%             
-%         end
+        s.phonem.(akt_phonem) = SearchPhoneme(Phonem{phph});
     end
 end
 
+% Struct 's' wird an die Funktion 'output_data' übergeben für die Ausgabe im 
+% Command Window
+output_data(s);
 
+% Außerdem wird das Struct 's' unter dem Namen 'data_list' im Workspace gespeichert 
+assignin('base','data_list',s);
 
 %--------------------Licence ---------------------------------------------
 % Copyright (c) <2015> J. Heimann, D. Popken, P. Luedtke

@@ -75,7 +75,7 @@ if ~isempty(pos2)
     ausgabe = var(2:end); % Erster Eintrag ist 'var = 0', daher Ausgabe von (2:end)
     
 else
-    ausgabe = sprintf('word not found');
+    ausgabe = [];
 end
 %--------------------Licence ---------------------------------------------
 % Copyright (c) <2015> J. Heimann, P. Luedtke, D. Popken
