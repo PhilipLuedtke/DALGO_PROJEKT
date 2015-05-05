@@ -20,9 +20,10 @@ Additionally, there are test-files for each subfunction (SearchWordTest.m,...).
 All the subfunctions and the IMIT MIT Database must be placed in the same directory as the SearchDatabase.m-File.
 
 `It is helpfull to check the adjusted path in the subfunctions to avoid potential errors.`
-## How to use SearchDatabase.m
+## How to use SearchDatabase2.m
+**Achtung:** `SearchDatabase.m` ist eine alte Version! Bitte `SearchDatabase2.m` benutzen. 
 ### Syntax:
-`(s) = SearchDatabase('keyword1','type1','keyword2','type2',...)`
+`(s) = SearchDatabase2('keyword1','type1','keyword2','type2',...)`
 
 ###input types:
 - word
@@ -35,8 +36,8 @@ All the subfunctions and the IMIT MIT Database must be placed in the same direct
 
 
 Examples:
-- `(s) = SearchDatabase('she','word','sa1','sentence','epi','phonem');`
-- `(s) = SearchDatabase('she','word','her','word','marc0','person','sa1','sentence');`
+- `(s) = SearchDatabase2('she','word','sa1','sentence','epi','phonem');`
+- `(s) = SearchDatabase2('she','word','her','word','marc0','person','sa1','sentence');`
 
 
 ##Version History:
