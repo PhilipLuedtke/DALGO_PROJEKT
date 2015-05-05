@@ -31,15 +31,11 @@ if isempty(regexp(name_sen,'[a-z][a-z][0-9]', 'match'))
     folder_sen = [];
     show_sen = [];
 else
+
     
-    %% Eingabe des absoluten Pfades der TIMIT MIT-Datenbank
-    
-    % relativer Pfad
-    % path_name = '..\DALGO_PROJEKT\TIMIT MIT';
-    % absoluter Pfad (Jan)
-    % path_name = '..\DALGO_PROJEKT\TIMIT MIT';
-    % absoluter Pfad (Philip)
-    path_name = '/Users/andimeu/Documents/FH/6. Semester/DALGO/DALGO_PROJEKT/TIMIT MIT';
+    %% Eingabe des Pfades der TIMIT MIT-Datenbank
+        
+    path_name = '..\DALGO_PROJEKT\TIMIT MIT';
     
     %% Auslesen der Ordner der Testpersonen mit relevanten Inhalt
     
@@ -66,7 +62,8 @@ else
     end
     
     %% Suche nach dem Satz in den Ordnerstrukturen
-    
+   
+
     % Zaehlindex
     idx = 1;
     
@@ -75,8 +72,8 @@ else
         fol_name = folder{fol_idx};
         
         % Speichert alle txt-Dateien aus einem Ordner
-        %file_name = dir(strcat(path_name,'\',fol_name,'\','*txt')); % WINDOWS
-        file_name = dir(strcat(path_name,'/',fol_name,'/','*txt')); % MAC
+        file_name = dir(strcat(path_name,'\',fol_name,'\','*txt')); % WINDOWS
+%         file_name = dir(strcat(path_name,'/',fol_name,'/','*txt')); % MAC
         
         % For-Schleife, um die einzelnen Satznamen mit dem Gesuchten
         % abzugleichen
@@ -100,8 +97,8 @@ else
         %% Ausgabe des Satzes
         
         % Speichert die gesuchte txt-Datei
-        % file = dir(strcat(path_name, '\', folder_sen{1,1}, '\', [name_sen, '.txt']));   % WINDOWS
-        file = dir(strcat(path_name, '/', folder_sen{1,1}, '/', [name_sen, '.txt']));   % MAC
+        file = dir(strcat(path_name, '\', folder_sen{1,1}, '\', [name_sen, '.txt']));   % WINDOWS
+        %file = dir(strcat(path_name, '/', folder_sen{1,1}, '/', [name_sen, '.txt']));   % MAC
         % Einlesen der txt-Datei
         fid = fopen(file.name);
         

@@ -8,7 +8,9 @@ function [] = output_data(s)
 
 % Author: J. Heimann D. Popken P. Luedtke (c) TGM @ Jade Hochschule applied licence see EOF
 % Version History:
+
 % Ver. 0.01 initial create (empty) 04-May-2015  Initials (JH, DP, PL)
+
 
 %------------Your function implementation here---------------------------
 
